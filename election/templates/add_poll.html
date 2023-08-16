@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+    {% block extra_style %}
+    <style type="text/css">
+      .center-item {
+        position: absolute;
+        top: 15%;
+        left: 5%;
+        min-width: 80%;
+      }
+    </style>
+    {% endblock %}
+
+{% block content %}
+        <div class="container-fluid">
+            {% if message %}
+              <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>
+                  {{ message }}
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endif %}
+            
+            {% if err_msg %}
+              <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                  {{ err_msg }}
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endif %}
+            <div class="center-item">
+              <div class="card border-success col-md-6 offset-md-3">
+                  <div class="card-header">
+                      <h4>Update Polling Unit Result</h4>
+                  </div>
+                  <div class="card-body">
+                  <form method="post">
+                      {% csrf_token %}
+                      {% bootstrap_form form %}
+                      {% buttons %}
+                      <button type="submit" class="btn btn-success float-end">Update Result</button>
+                      {% endbuttons %}
+                  </form>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+  {% endblock %}
