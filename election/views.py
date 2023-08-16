@@ -44,7 +44,7 @@ class ResultSumTotalView(generic.View):
 
             for poll_unit in polling_units:
                 #  get id of each polling unit under the polling units
-                poll_unit_id = Poll_unit.polling_unit_id
+                poll_unit_id = poll_unit.polling_unit_id
                 
                 # check results of each polling unit
                 poll_unit_result = Announced_pu_result.objects.filter(polling_unit_unique_id=poll_unit_id)
